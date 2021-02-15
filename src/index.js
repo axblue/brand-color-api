@@ -8,6 +8,7 @@ import middleware from "./middleware";
 import api from "./api";
 import config from "./config.json";
 
+const port = process.env.PORT || 3000;
 let app = express();
 app.server = http.createServer(app);
 // process.env.API_ENDPOINT
@@ -36,7 +37,7 @@ initializeDb((db) => {
   // api router
   app.use("/api", api({ config, db }));
 
-  app.server.listen(process.env.PORT || config.port, () => {
+  app.server.listen(port, () => {
     console.log(`Started on port ${app.server.address().port}`);
   });
 });
