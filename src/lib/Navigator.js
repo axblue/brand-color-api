@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer");
 const debug = require("debug")("navigator");
 debug.log = console.log.bind(console);
+import "babel-polyfill";
 // import Blocklist from "./Blocklist";
 
 class Navigator {
