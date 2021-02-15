@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
-    "heroku-postbuild": "npm install",
     "start": "node dist",
+    "heroku-start": "node dist",
     "prestart": "npm run -s build",
-    "test": "eslint src"
+    "test": "eslint src",
+    "heroku-postbuild": "npm run -s build"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
