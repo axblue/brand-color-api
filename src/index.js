@@ -7,6 +7,7 @@ import initializeDb from "./db";
 import middleware from "./middleware";
 import api from "./api";
 import config from "./config.json";
+import "@babel/polyfill";
 
 const port = process.env.PORT || 3000;
 let app = express();
