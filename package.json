@@ -8,7 +8,9 @@
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
-    "test": "eslint src"
+    "test": "eslint src",
+    "heroku-prebuild": "npm install -f",
+    "heroku-postbuild": "npm run -s build"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
