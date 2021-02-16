@@ -9,7 +9,7 @@ import api from "./api";
 import config from "./config.json";
 import "babel-polyfill";
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3030;
 let app = express();
 app.server = http.createServer(app);
 // process.env.API_ENDPOINT
