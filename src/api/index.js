@@ -6,13 +6,21 @@ export default ({ config, db }) => {
   (async () => {
     const cluster = await Cluster.launch({
       concurrency: Cluster.CONCURRENCY_CONTEXT,
-      maxConcurrency: 3,
+      maxConcurrency: 7,
+      headless: false,
       puppeteerOptions: {
         headless: true,
         args: ["--no-sandbox"],
       },
+      monitor: true,
+      workerCreationDelay: 100,
     });
     await cluster.task(async ({ page, data: url }) => {
+      await page.setRequestInterception(true);
+      page.on("request", (request) => {
+        if (request.resourceType() === "image") request.abort();
+        else request.continue();
+      });
       await page.goto(url);
 
       const data = await page.evaluate(() => {
