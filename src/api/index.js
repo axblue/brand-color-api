@@ -6,10 +6,9 @@ export default ({ config, db }) => {
   (async () => {
     const cluster = await Cluster.launch({
       concurrency: Cluster.CONCURRENCY_CONTEXT,
-      maxConcurrency: 7,
+      maxConcurrency: 10,
       headless: false,
       puppeteerOptions: {
-        headless: true,
         args: ["--no-sandbox"],
       },
       monitor: true,
