@@ -7,6 +7,10 @@ export default ({ config, db }) => {
     const cluster = await Cluster.launch({
       concurrency: Cluster.CONCURRENCY_CONTEXT,
       maxConcurrency: 3,
+      puppeteerOptions: {
+        headless: true,
+        args: ["--no-sandbox"],
+      },
     });
     await cluster.task(async ({ page, data: url }) => {
       await page.goto(url);
