@@ -1,7 +1,7 @@
 const { Pool } = require("pg");
 const config = require("../config/config.js");
 const logger = require("./logger");
-
+import "@babel/polyfill";
 const pgconfig = {
   user: config.db.user,
   database: config.db.database,
