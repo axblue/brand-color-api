@@ -8,8 +8,7 @@ import middleware from "./middleware";
 import api from "./api";
 import config from "./config.json";
 require("babel-core/register");
-require("babel-polyfill");
-require("regenerator-runtime/runtime");
+import "regenerator-runtime/runtime";
 const browser = require("./lib/browser");
 
 const port = process.env.PORT || 3030;
