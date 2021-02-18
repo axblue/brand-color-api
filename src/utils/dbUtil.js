@@ -1,4 +1,4 @@
-const { Pool } = require("pg");
+const { Pool, Client } = require("pg");
 const config = require("../config/config.js");
 const logger = require("./logger");
 import "babel-polyfill";
@@ -15,13 +15,24 @@ const pgconfig = {
 const connectionString =
   "postgres://etdsknktpeikcb:aca4b196457a95e5f05501815ae08db8d9dc1309a2465049da6840a3d95f009f@ec2-54-155-208-5.eu-west-1.compute.amazonaws.com:5432/dahllu71n0baeb";
 // { rejectUnauthorized: false },
-const pool = new Pool({ connectionString });
-
-logger.info(`DB Connection Settings: ${JSON.stringify(pgconfig)}`);
-
-pool.on("error", function (err, client) {
-  logger.error(`idle client error, ${err.message} | ${err.stack}`);
+const client = new Client({ connectionString });
+client.connect((err) => {
+  if (err) {
+    console.error("error connecting", err.stack);
+  } else {
+    console.log("connected");
+    client.end();
+  }
 });
+const pool = new Pool({ connectionString });
+pool
+  .connect()
+  .then((client) => {
+    console.log("connected");
+    client.release();
+  })
+  .catch((err) => console.error("error connecting", err.stack))
+  .then(() => pool.end());
 
 /*
  * Single Query to Postgres
