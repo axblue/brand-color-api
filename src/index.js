@@ -8,6 +8,7 @@ import middleware from "./middleware";
 import api from "./api";
 import config from "./config.json";
 import "babel-polyfill";
+const browser = require("./lib/browser");
 
 const port = process.env.PORT || 3030;
 let app = express();
@@ -29,7 +30,7 @@ app.use(
     limit: config.bodyLimit,
   })
 );
-
+browser.init().then(console.log("Browser run"));
 // connect to db
 initializeDb((db) => {
   // internal middleware
