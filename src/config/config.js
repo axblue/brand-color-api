@@ -7,6 +7,7 @@ const config = {
   loggerLevel: process.env.LOGGERLEVEL || "debug",
   db: {
     user: process.env.DB_USER || "",
+    url: process.env.DB_URL || "",
     database: process.env.DB_NAME || "",
     password: process.env.DB_PASS || "",
     host: process.env.DB_HOST || "",

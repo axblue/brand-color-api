@@ -12,24 +12,14 @@ const pgconfig = {
   idleTimeoutMillis: config.db.idleTimeoutMillis,
   ssl: true,
 };
-const connectionStringD =
-  "postgres://etdsknktpeikcb:aca4b196457a95e5f05501815ae08db8d9dc1309a2465049da6840a3d95f009f@ec2-54-155-208-5.eu-west-1.compute.amazonaws.com:5432/dahllu71n0baeb";
-// { rejectUnauthorized: false },
-const client = new Client({
-  connectionString: connectionStringD,
+const connectionString = config.db.url;
+
+const pool = new Pool({
+  connectionString: connectionString,
   ssl: {
     rejectUnauthorized: false,
   },
 });
-client.connect((err) => {
-  if (err) {
-    console.error("error connecting", err.stack);
-  } else {
-    console.log("connected");
-    client.end();
-  }
-});
-const pool = new Pool({ connectionStringD });
 pool
   .connect()
   .then((client) => {
