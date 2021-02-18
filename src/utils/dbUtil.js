@@ -10,9 +10,9 @@ const pgconfig = {
   port: config.db.port,
   max: config.db.max,
   idleTimeoutMillis: config.db.idleTimeoutMillis,
-  ssl: { rejectUnauthorized: false },
+  ssl: true,
 };
-
+// { rejectUnauthorized: false },
 const pool = new Pool(pgconfig);
 
 logger.info(`DB Connection Settings: ${JSON.stringify(pgconfig)}`);
