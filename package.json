@@ -40,6 +40,7 @@
     "pg": "^8.5.1",
     "puppeteer": "^7.1.0",
     "puppeteer-cluster": "^0.22.0",
+    "regenerator-runtime": "^0.13.7",
     "resource-router-middleware": "^0.6.0",
     "sequelize": "^6.5.0",
     "sequelize-cli": "^6.2.0",
