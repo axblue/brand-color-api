@@ -46,6 +46,7 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@babel/plugin-transform-async-to-generator": "^7.12.13",
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",
