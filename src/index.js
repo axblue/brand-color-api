@@ -7,7 +7,8 @@ import initializeDb from "./db";
 import middleware from "./middleware";
 import api from "./api";
 import config from "./config.json";
-import "babel-polyfill";
+require("babel-core/register");
+require("babel-polyfill");
 const browser = require("./lib/browser");
 
 const port = process.env.PORT || 3030;
