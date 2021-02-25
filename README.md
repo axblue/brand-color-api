@@ -1,57 +1,62 @@
-Express & ES6 REST API Boilerplate
-==================================
+# BRANDr API
+BRANDr is an API which retrieves the logos and branding colors of a website. You can use it to obtain branding information of a website based on a URL.
 
-This is a straightforward boilerplate for building REST APIs with ES6 and Express.
+The project utilizes [Puppeteer](https://github.com/GoogleChrome/puppeteer) in order to load a website and perform strategies to assert what the logo and branding colors of a website could be. There are various strategies deployed:
+- DOM parsing
+- Meta parsing
+- Social data parsing 
+- Color usage parsing 
 
-- ES6 support via [babel](https://babeljs.io)
-- REST resources as middleware via [resource-router-middleware](https://github.com/developit/resource-router-middleware)
-- CORS support via [cors](https://github.com/troygoode/node-cors)
-- Body Parsing via [body-parser](https://github.com/expressjs/body-parser)
+## Deploying the BRANDr API
+Checkout the repository, create your own `.env` file and deploy the BRANDr API Docker container using `docker-compose`:
 
-> Tip: If you are using [Mongoose](https://github.com/Automattic/mongoose), you can automatically expose your Models as REST resources using [restful-mongoose](https://git.io/restful-mongoose).
+```bash
+docker-compose up -d
+``` 
+
+Use `docker logs` to monitor the container usage and debug information.
+
+## Using the API
+Check out the API with your favorite REST request tool, such as Postman.
 
 
+### Request
+Fire a x-form-urlencoded POST request to BRANDr endpoint
 
-Getting Started
----------------
+| Item        | Value                             |
+|-------------|-----------------------------------|
+| Endpoint    | *endpoint specified in .env file* |
+| Method      | POST                              |
+| Body        | x-form-urlencoded form parameters |
+|  - endpoint | `<<website URL to retrieve>>`     |
 
-```sh
-# clone it
-git clone git@github.com:developit/express-es6-rest-api.git
-cd express-es6-rest-api
 
-# Make it your own
-rm -rf .git && git init && npm init
+### Response
+A response could like the result displayed below. The logo array contains our guess. The other properties are the best guesses for their respective strategy.
 
-# Install dependencies
-npm install
-
-# Start development live-reload server
-PORT=8080 npm run dev
-
-# Start production server:
-PORT=8080 npm start
+```json
+{
+    "uri": "https://www.scienta.nl",
+    "extractions": {
+        "logo": [
+            "<<host>>/520582509e2936254f0bb430d0da3a46.png",
+            "<<host>>/aadc84c2b34d58618564d8ab721f8f7d.jpg",
+            "<<host>>/39766a4fd1f3d8149ea1f266c8a8a996.png"
+        ],
+        "dom-logo": "<<host>>/520582509e2936254f0bb430d0da3a46.png",
+        "social-logo": "<<host>>/aadc84c2b34d58618564d8ab721f8f7d.jpg",
+        "meta-logo": "<<host>>/6816a7546d517431aa9d5894f27c0c42.png",
+        "site-style": [
+            {
+                "colors": [
+                    "rgb(230, 81, 0)"
+                ],
+                "grays": [
+                    "rgb(51, 51, 51)",
+                    "rgb(0, 0, 0)"
+                ]
+            }
+        ]
+    }
+}
 ```
-Docker Support
-------
-```sh
-cd express-es6-rest-api
-
-# Build your docker
-docker build -t es6/api-service .
-#            ^      ^           ^
-#          tag  tag name      Dockerfile location
-
-# run your docker
-docker run -p 8080:8080 es6/api-service
-#                 ^            ^
-#          bind the port    container tag
-#          to your host
-#          machine port   
-
-```
-
-License
--------
-
-MIT
