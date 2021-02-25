@@ -12,8 +12,6 @@ api/getColor?url=https://github.com
 
 ### Response
 
-A response could like the result displayed below. The logo array contains our guess. The other properties are the best guesses for their respective strategy.
-
 ```json
 {
   "colors": ["rgb(230, 81, 0)"],
