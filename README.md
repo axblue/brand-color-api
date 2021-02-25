@@ -4,6 +4,7 @@ Brand Color is an API which retrieves the branding colors of a website.
 
 The project utilizes [Puppeteer](https://github.com/GoogleChrome/puppeteer) and [Puppeteer cluster](https://github.com/thomasdondorf/puppeteer-cluster).
 
+<img src="https://i.ibb.co/7V2w7Ss/brand-color.gif"/>
 
 ### Request
 
