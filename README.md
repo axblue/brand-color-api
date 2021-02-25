@@ -1,4 +1,4 @@
-# brand-color API
+# Brand color API
 
 BRANDr is an API which retrieves the branding colors of a website.
 
