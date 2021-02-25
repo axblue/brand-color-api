@@ -4,7 +4,6 @@ BRANDr is an API which retrieves the branding colors of a website.
 
 The project utilizes [Puppeteer](https://github.com/GoogleChrome/puppeteer) [Puppeteer cluster](https://github.com/thomasdondorf/puppeteer-cluster) in order to load a website and perform strategies to assert what the logo and branding colors of a website could be. There are various strategies deployed:
 
-- Color usage parsing
 
 ### Request
 
