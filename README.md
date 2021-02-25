@@ -8,7 +8,7 @@ The project utilizes [Puppeteer](https://github.com/GoogleChrome/puppeteer) and 
 
 ### Request
 
-api/getColor?url=https://example.com
+api/getColor?url=https://github.com
 
 ### Response
 
